@@ -36,13 +36,34 @@ export class DataProcessor {
 
     // Convert OHLC data to Chart.js candlestick format
     convertToChartJsFormat(ohlcData) {
-        return ohlcData.map(ohlc => ({
-            x: new Date(ohlc[0]),
-            o: ohlc[1], // Open
-            h: ohlc[2], // High
-            l: ohlc[3], // Low
-            c: ohlc[4]  // Close
-        }));
+        if (!ohlcData || ohlcData.length === 0) {
+            console.warn('No OHLC data provided to convertToChartJsFormat');
+            return [];
+        }
+
+        const formattedData = ohlcData.map(ohlc => {
+            if (!Array.isArray(ohlc) || ohlc.length < 5) {
+                console.warn('Invalid OHLC data point:', ohlc);
+                return null;
+            }
+
+            return {
+                x: new Date(ohlc[0]), // Timestamp
+                o: parseFloat(ohlc[1]), // Open
+                h: parseFloat(ohlc[2]), // High
+                l: parseFloat(ohlc[3]), // Low
+                c: parseFloat(ohlc[4])  // Close
+            };
+        }).filter(point => point !== null);
+
+        console.log(`Converted ${formattedData.length} OHLC data points to Chart.js format`);
+        
+        // Validate the first few data points
+        if (formattedData.length > 0) {
+            console.log('Sample converted data:', formattedData.slice(0, 3));
+        }
+
+        return formattedData;
     }
 
     // Legacy method for line charts (fallback)
