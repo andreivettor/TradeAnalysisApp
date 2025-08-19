@@ -1,0 +1,39 @@
+{
+  "name": "trade-analysis-app",
+  "version": "1.0.0",
+  "description": "A modern, responsive web application for analyzing Bitcoin trading data using the CoinGecko API with shadcn/ui-styled design system",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "python -m http.server 8000",
+    "serve:py": "python -m http.server 8000",
+    "serve:node": "node server.js"
+  },
+  "keywords": [
+    "bitcoin",
+    "trading",
+    "analysis",
+    "cryptocurrency",
+    "coingecko",
+    "chart",
+    "shadcn",
+    "ui",
+    "design-system"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "chart.js": "^4.4.0",
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "chartjs-chart-financial": "^0.2.1",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
